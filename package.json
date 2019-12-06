@@ -1,0 +1,25 @@
+{
+  "name": "journey-mate-backend-kushal-shrestha",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.13"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rockushal3/Journey-Mate-Backend-Kushal-Shrestha.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rockushal3/Journey-Mate-Backend-Kushal-Shrestha/issues"
+  },
+  "homepage": "https://github.com/rockushal3/Journey-Mate-Backend-Kushal-Shrestha#readme"
+}
