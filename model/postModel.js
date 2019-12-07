@@ -10,7 +10,6 @@ const post = mongoose.model('Post', {
         require:true,
         trim: true
     },
-    
     date:{
         type: Date,
     },
