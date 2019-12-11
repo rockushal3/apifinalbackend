@@ -1,5 +1,10 @@
 const mongoose = require('mongoose')
-const trip = mongoose.model('Trip', {     
+const trip = mongoose.model('Trip', {    
+    user_id :{
+        type: String,
+        require:true,
+        trim: true
+    },   
      trip_name: {
         type: String,
         require:true,

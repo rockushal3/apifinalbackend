@@ -1,14 +1,40 @@
 const mongoose = require('mongoose');
 const user = mongoose.model('User', {     
-    Name: {
+    name: {
         type: String,
         require:true,
         trin: true
     },
-    completed:{
-        type: Boolean,
-        default: false
-    }
+    address:{
+            type: String,
+            require:true,
+            trim: true
+        },  
+    phone :{
+            type: String,
+            require:true,
+            trim: true
+        },
+    gender :{
+            type: String,
+            require:true,
+            trim: true
+        },     
+    dob :{
+            type: String,
+            require:true,
+            trim: true
+        },
+    email :{
+            type: String,
+            require:true,
+            trim: true
+        },  
+    password :{
+            type: String,
+            require:true,
+            trim: true
+        },       
     
   });
 

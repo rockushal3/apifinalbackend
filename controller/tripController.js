@@ -4,7 +4,7 @@ const trip = require("../model/tripModel")
 exports.addTrip =(req, res) => {
     const Trip = new trip(
         req.body)
-        Trip.save().then(function(e){
+        Trip.save().then(function( ){
             res.send("Trip has been added")
         }).catch(function(e){
             res.send(e)
