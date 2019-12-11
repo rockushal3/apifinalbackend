@@ -1,6 +1,8 @@
+require("./db/dbsetting");
 const express = require('express');
 const bodyparser = require("body-parser");
 const app = express();
+
 
 //Routers
 const UserRoute = require("./routers/userRoute");

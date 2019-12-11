@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 const trip = mongoose.model('Trip', {     
      trip_name: {
         type: String,
@@ -16,6 +16,6 @@ const trip = mongoose.model('Trip', {
     },
     
     
-  });
+  })
 
   module.exports = trip
