@@ -1,6 +1,7 @@
 require("./db/dbsetting")
 const express = require('express')
 const bodyparser = require("body-parser")
+const cors = require("cors")
 const app = express()
 
 
@@ -10,6 +11,7 @@ const TripRoute = require("./routers/tripRoute")
 
 //parse json data in form body client UI
 app.use(bodyparser.urlencoded({ extended: true }))
+app.use(cors())
 app.use(bodyparser.json())
 
 app.use(express.json())

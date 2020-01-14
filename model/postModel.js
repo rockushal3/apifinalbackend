@@ -16,10 +16,10 @@ const post = mongoose.model('Post', {
         trim: true
     },
     date:{
-        type: Date,
+        type: String,
     },
     time:{
-        type:time
+        type:String
     }
     
   });
