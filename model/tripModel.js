@@ -1,4 +1,6 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose') // database connection
+
+//attributes of database and create model
 const trip = mongoose.model('Trip', {    
     user_id :{
         type: String,
@@ -17,7 +19,8 @@ const trip = mongoose.model('Trip', {
     },
     
     date:{
-        type: String
+        type: String,
+        trim: true
     },
     
     
