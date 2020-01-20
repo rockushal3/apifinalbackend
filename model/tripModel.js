@@ -19,7 +19,7 @@ const trip = mongoose.model('Trip', {
     },
     
     date:{
-        type: String,
+        type: Date,
         trim: true
     },
     

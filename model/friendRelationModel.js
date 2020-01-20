@@ -1,4 +1,6 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')// database connection
+
+//attributes of database and create model
 const friend = mongoose.model('friendRelation', {   
 user_id_1 :{
     type: String,

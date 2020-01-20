@@ -1,5 +1,7 @@
-const jwt = require('jsonwebtoken');
-const User = require('../model/userModel');
+const jwt = require('jsonwebtoken')// token handle
+const User = require('../model/userModel') // user model
+
+// auth token verify function
 const auth = async (req, res, next) => {
  try {
  const token = req.header('Authorization').replace('Bearer ', '')

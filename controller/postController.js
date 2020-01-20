@@ -2,6 +2,7 @@ const post = require("../model/postModel")
 
 //function for adding post
 exports.addpost =(req, res) => {
+    console.log(req.body)
     const Post = new post(
         req.body)
         Post.save().then(function( ){

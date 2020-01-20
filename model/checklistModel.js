@@ -1,4 +1,6 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose') // database connection
+
+//attributes of database and create model
 const checklist = mongoose.model('checklist', {    
     trip_id :{
         type: String,
