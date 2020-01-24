@@ -4,6 +4,7 @@ const trip = require("../model/tripModel")
 exports.addTrip =(req, res) => {
     const Trip = new trip(
         req.body)
+        console.log(Trip)
         Trip.save().then(function( ){
             res.send("Trip has been added")
         }).catch(function(e){
@@ -24,6 +25,16 @@ exports.findTripById= (req, res) => {
     trip.findById(req.params._id)
     .then(function(tripById) {
         res.send(tripById).catch(function(e){
+            res.send(e)
+        })
+      })
+  }
+
+      //function for getting trip by user id
+exports.findTripByUserId= (req, res) => {
+    trip.find(req.params.user_id)
+    .then(function(tripByuserId) {
+        res.send(tripByuserId).catch(function(e){
             res.send(e)
         })
       })
