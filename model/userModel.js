@@ -36,6 +36,14 @@ const user = new mongoose.Schema({
         require: true,
         trim: true
     },
+    image:{
+        type:String,
+        trim:true
+    },
+    coverimage:{
+        type:String,
+        trim:true
+    },
     tokens: [{
         token: {
             type: String,

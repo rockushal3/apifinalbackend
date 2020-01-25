@@ -30,7 +30,7 @@ exports.findTripById= (req, res) => {
       })
   }
 
-      //function for getting trip by user id
+//function for getting trip by user id
 exports.findTripByUserId= (req, res) => {
     trip.find(req.params.user_id)
     .then(function(tripByuserId) {
