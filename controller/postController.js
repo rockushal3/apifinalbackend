@@ -3,17 +3,12 @@ const user = require("../model/userModel")
 var ObjectID = require('mongodb').ObjectID; 
 //function for adding post
 exports.addpost = (req, res) => {
-    console.log(req.body.user_id)
     req.files.map(function (items) {
-    
         const postdata = {
             image: items.filename,
             caption: req.body.caption,
             user_id: ObjectID(req.body.user_id)
-
         }
-        
-
         const Post = new post(
             postdata)
         Post.save().then(function () {
@@ -27,6 +22,15 @@ exports.addpost = (req, res) => {
 //function for getting post
 exports.findpost = async (req, res) => {
     post.find().populate('user_id').then(function (findAllpost) {
+        res.send(findAllpost).catch(function (e) {
+            res.send(e)
+        })
+    })
+}
+
+//function for getting post
+exports.findpostByUserId = async (req, res) => {
+    post.find({user_id:req.params.user_id}).populate('user_id').then(function (findAllpost) {
         res.send(findAllpost).catch(function (e) {
             res.send(e)
         })
