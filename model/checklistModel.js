@@ -3,8 +3,8 @@ const mongoose = require('mongoose') // database connection
 //attributes of database and create model
 const checklist = mongoose.model('checklist', {    
     trip_id :{
-        type: String,
-        require:true,
+        type: mongoose.Schema.ObjectId,
+        ref: 'Trip',
         trim: true
     },   
      checklistname: {
@@ -17,7 +17,7 @@ const checklist = mongoose.model('checklist', {
         type: Boolean,
         require:true,
     }
-    
+
   });
 
   module.exports = checklist

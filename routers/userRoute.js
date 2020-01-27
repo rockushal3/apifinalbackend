@@ -12,6 +12,6 @@ router.get("/findUserById/:_id",userController.findUserById)
 router.delete("/deleteUser/:_id",userController.deleteUserById)
 router.put("/updateUser/:_id",userController.updateUser)
 router.put("/updateProfile/:_id",upload,userController.uploadimage)
-router.put("/updateCover/:_id",userController.uploadcoverimage)
+router.put("/updateCover/:_id",upload,userController.uploadcoverimage)
 router.get("/getuserbyemail/:email",userController.checkemail)
 module.exports = router

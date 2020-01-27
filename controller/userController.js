@@ -1,4 +1,4 @@
-const user = require("../model/userModel")
+const  user = require("../model/userModel")
 var ObjectID = require('mongodb').ObjectID; 
 //function for adding trip
 exports.addUser = (req, res) => {
@@ -7,7 +7,7 @@ exports.addUser = (req, res) => {
     User.save().then(function () {
         res.send("User Has been Register")
     }).catch(function (e) {
-        res.send(e)
+        res.status(400).send()
     })
 }
 
@@ -15,7 +15,7 @@ exports.addUser = (req, res) => {
 exports.findUser = async (req, res) => {
     user.find().then(function (findAllUser) {
         res.send(findAllUser).catch(function (e) {
-            res.send(e)
+            res.status(400).send()
         })
     })
 }
@@ -24,7 +24,7 @@ exports.findUserById = (req, res) => {
     user.findById(req.params._id)
         .then(function (userById) {
             res.send(userById).catch(function (e) {
-                res.send(e)
+                res.status(400).send()
             })
         })
 }
@@ -33,7 +33,7 @@ exports.findUserById = (req, res) => {
 exports.deleteUserById = (req, res) => {
     user.findByIdAndDelete(req.params._id).then(function () {
         res.send("User Deleted").catch(function (e) {
-            res.send(e)
+            res.status(400).send()
         })
     })
 }
@@ -44,23 +44,12 @@ exports.updateUser = (req, res) => {
     console.log(req.params._id)
     user.findOneAndUpdate({_id:ObjectID(req.params._id)}, req.body).then(function () {
         res.send("User Updated").catch(function (e) {
-            res.send(e)
+            res.status(400).send()
         })
     })
 }
 
-exports.uploadimage = (req, res) => {
-    req.files.map(function (items) {
-        const Post = new post({
-            image: items.filename
-        })
-        user.findOneAndUpdate(req.params._id, Post).then(function () {
-            res.send("Profile Picture Update").catch(function (e) {
-                res.send(e)
-            })
-        })
-    })
-}
+
 
 //function for Login Function
 exports.login = async (req, res) => {
@@ -79,7 +68,9 @@ exports.login = async (req, res) => {
                 address: Users.address,
                 dob: Users.dob,
                 image: Users.image,
-                password: Users.password
+                password: Users.password,
+                coverimage:Users.coverimage,
+                image:Users.image
             }
         console.log(userdetail)
         res.send(userdetail)
@@ -89,20 +80,31 @@ exports.login = async (req, res) => {
     }
 }
 
-
 exports.uploadcoverimage = (req, res) => {
     req.files.map(function (items) {
         const User = {
             coverimage: items.filename
 
         }
-        user.findOneAndUpdate(req.params._id, User).then(function () {
+        user.findOneAndUpdate({_id:ObjectID(req.params._id)}, User).then(function () {
             res.send("Cover Picture Update").catch(function (e) {
-                res.send(e)
+                res.status(400).send()
             })
         })
     })
+}
 
+exports.uploadimage = (req, res) => {
+    req.files.map(function (items) {
+        const User = {
+            image: items.filename
+        }
+        user.findOneAndUpdate({_id:ObjectID(req.params._id)}, User).then(function () {
+            res.send("Profile Picture Update").catch(function (e) {
+                res.status(400).send()
+            })
+        })
+    })
 }
 
 //function for Login Function

@@ -3,7 +3,8 @@ const mongoose = require('mongoose') // database connection
 //attributes of database and create model
 const trip = mongoose.model('Trip', {    
     user_id :{
-        type: String,
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
         require:true,
         trim: true
     },   
