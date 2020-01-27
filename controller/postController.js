@@ -24,6 +24,14 @@ exports.addpost = (req, res) => {
     })
 }
 
+//function for getting post
+exports.findpost = async (req, res) => {
+    post.find().populate('user_id').then(function (findAllpost) {
+        res.send(findAllpost).catch(function (e) {
+            res.send(e)
+        })
+    })
+}
 
 //function for getting post by id
 exports.findpostById = (req, res) => {
