@@ -30,9 +30,18 @@ exports.getrequest =(req, res) => {
         //function for get all friend list
 exports.getAllFriends =(req, res) => {
 
-    friendrelation.find({user_id_2:req.params._id,Status:"Friends"},{user_id_1:req.params._id,Status:"Friends"}).populate('user_id_1','user_id_2').then(function(getfriend){
+    friendrelation.find({user_id_2:req.params._id,Status:"Friends"},{user_id_1:req.params._id,Status:"Friends"}).populate('user_id_1').populate('user_id_2').then(function(getfriend){
             res.send(getfriend)
         }).catch(function(e){
             res.send(e)
         })
     }
+
+    //function for accept friend
+exports.acceptfriend = (req, res) => {
+    friendrelation.findByIdAndUpdate(req.params._id, {Status:"Friends"}).then(function () {
+        res.send("friend Accepted").catch(function (e) {
+            res.send(e)
+        })
+    })
+}
