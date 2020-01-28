@@ -18,7 +18,7 @@ Status :{
     type: String,
     require:true,
     trim: true
-},   
+}   
 })
 
 module.exports = friend
