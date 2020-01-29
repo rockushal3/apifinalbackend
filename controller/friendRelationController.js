@@ -58,3 +58,8 @@ exports.checkFriendRelation = (req, res) => {
     })
 }
 
+exports.deleteFriend = (req,res) =>{
+    friendrelation.findByIdAndDelete(req.params.id).then(function(){
+        res.send("Friend Deleted")
+    })
+}

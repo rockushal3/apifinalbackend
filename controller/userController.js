@@ -109,7 +109,7 @@ exports.uploadimage = (req, res) => {
 
 //function for Login Function
 exports.checklogin = async (req, res) => {
-    res.status(200).send()
+    res.status(req.user).send()
 }
 
 //function for email validation
