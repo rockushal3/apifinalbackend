@@ -8,4 +8,5 @@ router.get("/findTripById/:_id",tripController.findTripById)
 router.get("/findTripByUserId/:user_id",auth,tripController.findTripByUserId)
 router.delete("/deleteTrip/:_id",tripController.deleteTripById)
 router.put("/updateTrip/:_id",tripController.updateTrip)
+router.get("/search",tripController.searchTrip)
 module.exports = router
