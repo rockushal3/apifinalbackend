@@ -5,7 +5,7 @@ exports.addUser = (req, res) => {
     const User = new user(
         req.body)
     User.save().then(function () {
-        res.send("User Has been Register")
+        res.status(200).send()
     }).catch(function (e) {
         res.status(400).send()
     })
@@ -32,7 +32,7 @@ exports.findUserById = (req, res) => {
 //fuction for delete trip by id 
 exports.deleteUserById = (req, res) => {
     user.findByIdAndDelete(req.params._id).then(function () {
-        res.send("User Deleted").catch(function (e) {
+        res.status(200).send().catch(function (e) {
             res.status(400).send()
         })
     })
@@ -43,7 +43,7 @@ exports.updateUser = (req, res) => {
     console.log(req.body);
     console.log(req.params._id)
     user.findOneAndUpdate({_id:ObjectID(req.params._id)}, req.body).then(function () {
-        res.send("User Updated").catch(function (e) {
+        res.status(200).send().catch(function (e) {
             res.status(400).send()
         })
     })
@@ -72,7 +72,6 @@ exports.login = async (req, res) => {
                 coverimage:Users.coverimage,
                 image:Users.image
             }
-        console.log(userdetail)
         res.send(userdetail)
     }
     catch (e) {
@@ -87,7 +86,7 @@ exports.uploadcoverimage = (req, res) => {
 
         }
         user.findOneAndUpdate({_id:ObjectID(req.params._id)}, User).then(function () {
-            res.send("Cover Picture Update").catch(function (e) {
+            res.status(200).send().catch(function (e) {
                 res.status(400).send()
             })
         })
@@ -100,7 +99,7 @@ exports.uploadimage = (req, res) => {
             image: items.filename
         }
         user.findOneAndUpdate({_id:ObjectID(req.params._id)}, User).then(function () {
-            res.send("Profile Picture Update").catch(function (e) {
+            res.status(200).send().catch(function (e) {
                 res.status(400).send()
             })
         })
@@ -109,7 +108,7 @@ exports.uploadimage = (req, res) => {
 
 //function for Login Function
 exports.checklogin = async (req, res) => {
-    res.status(req.user).send()
+    res.send(req.user)
 }
 
 //function for email validation

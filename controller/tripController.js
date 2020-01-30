@@ -32,7 +32,7 @@ exports.findTripById= (req, res) => {
 
 //function for getting trip by user id
 exports.findTripByUserId= (req, res) => {
-    trip.find(req.params.user_id)
+    trip.find({user_id:req.params.user_id})
     .then(function(tripByuserId) {
         res.send(tripByuserId).catch(function(e){
             res.send(e)
