@@ -62,9 +62,12 @@ exports.findTripByUserId= (req, res) => {
 exports.searchTrip = (req, res) => {
     var get_title = req.query.trip_name;  
     console.log(get_title)  
-    trip.find({'trip_name': {$regex:get_title, $options:"i"}}).select('user_id').populate('user_id').then(function(result){
+    trip.find({'trip_name': {$regex:get_title, $options:"i"}})
+    .select('user_id').populate('user_id').then(function(result){
         res.send(result)
     }).catch(function(e){
         res.send(e)
     })
 }
+
+

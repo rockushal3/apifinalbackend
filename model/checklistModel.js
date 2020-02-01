@@ -17,7 +17,6 @@ const checklist = mongoose.model('checklist', {
         type: Boolean,
         require:true,
     }
-
   });
 
   module.exports = checklist

@@ -63,3 +63,9 @@ exports.deleteFriend = (req,res) =>{
         res.send("Friend Deleted")
     })
 }
+
+exports.getallfriendrelation=(req,res) => {
+    friendrelation.find({ $or: [{ user_id_2: req.params.id,Status:"Requested"},{ user_id_1: req.params.id,Status:"Friends"}]}).populate('user_id_1').populate('user_id_2').then(function(getalldata){
+        res.send(getalldata);
+    })
+}

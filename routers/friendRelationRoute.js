@@ -8,6 +8,7 @@ router.get("/allfriend/:_id",friendrelation.getAllFriends)
 router.put("/acceptfriend/:_id",friendrelation.acceptfriend)
 router.get("/checkRelation",friendrelation.checkFriendRelation)
 router.delete("/deleteFriend/:id",friendrelation.deleteFriend)
+router.get("/getallrelation/:id",friendrelation.getallfriendrelation)
 
 
 

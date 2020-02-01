@@ -21,7 +21,7 @@ exports.addpost = (req, res) => {
 
 //function for getting post
 exports.findpost = async (req, res) => {
-    post.find().populate('user_id').then(function (findAllpost) {
+    post.find().populate('user_id').sort({date: 'descending'}).then(function (findAllpost) {
         res.send(findAllpost).catch(function (e) {
             res.send(e)
         })
