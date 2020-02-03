@@ -1,5 +1,4 @@
 const post = require("../model/postModel")
-const user = require("../model/userModel")
 var ObjectID = require('mongodb').ObjectID; 
 //function for adding post
 exports.addpost = (req, res) => {
@@ -41,9 +40,9 @@ exports.findpostByUserId = async (req, res) => {
 exports.findpostById = (req, res) => {
     post.findById(req.params._id)
         .then(function (postById) {
-            res.send(postById).catch(function (e) {
-                res.send(e)
-            })
+            res.send(postById)
+        }).catch(function (e) {
+            res.send(e)
         })
 }
 

@@ -40,6 +40,7 @@ exports.deleteUserById = (req, res) => {
 
 //function for update trip 
 exports.updateUser = (req, res) => {
+    console.log("kushal")
     console.log(req.body);
     console.log(req.params._id)
     user.findOneAndUpdate({_id:ObjectID(req.params._id)}, req.body).then(function () {
@@ -94,6 +95,7 @@ exports.uploadcoverimage = (req, res) => {
 }
 
 exports.uploadimage = (req, res) => {
+   
     req.files.map(function (items) {
         const User = {
             image: items.filename
@@ -116,6 +118,30 @@ exports.checkemail = (req, res) => {
     user.findOne({email:req.params.email}).then(function (findAllUser) {
         res.send(findAllUser).catch(function (e) {
             res.send(e)
+        })
+    })
+}
+
+//fuction for logout 
+exports.logout=(req, res)=>{
+    user.findById(req.user._id, function(err, userdata){
+        console.log(req.token)
+      var  deletetoken = {token : req.token}
+
+    
+        userdata.tokens = userdata.tokens.splice(userdata.tokens.indexOf(deletetoken), 1);
+
+        userdata.save((err, data) => {
+            if(err) return res.send({
+                success : false,
+                message : err.message
+            })
+        })
+
+        return res.send({
+            success : true,
+            message : "Logged Out",
+
         })
     })
 }
