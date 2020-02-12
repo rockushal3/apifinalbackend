@@ -12,6 +12,7 @@ app.use(express.static(publicdirectory));
 const UserRoute = require("./routers/userRoute")
 const TripRoute = require("./routers/tripRoute")
 const PostRoute = require("./routers/postRoute")
+const FriendRoute = require("./routers/friendRelationRoute")
 //parse json data in form body client UI
 app.use(bodyparser.urlencoded({ extended: true }))
 app.use(cors())
@@ -20,4 +21,6 @@ app.use(express.json())
 app.use(UserRoute)
 app.use(TripRoute)
 app.use(PostRoute)
+app.use(FriendRoute)
+
 app.listen("3030")

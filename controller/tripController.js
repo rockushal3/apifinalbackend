@@ -4,7 +4,6 @@ const trip = require("../model/tripModel")
 exports.addTrip =(req, res) => {
     const Trip = new trip(
         req.body)
-        console.log(Trip)
         Trip.save().then(function( ){
             res.send("Trip has been added")
         }).catch(function(e){
@@ -32,7 +31,7 @@ exports.findTripById= (req, res) => {
 
 //function for getting trip by user id
 exports.findTripByUserId= (req, res) => {
-    trip.find(req.params.user_id)
+    trip.find({user_id:req.params.user_id})
     .then(function(tripByuserId) {
         res.send(tripByuserId).catch(function(e){
             res.send(e)
@@ -57,3 +56,16 @@ exports.findTripByUserId= (req, res) => {
             })
         })
   }
+
+  //router to search book by title
+exports.searchTrip = (req, res) => {
+    var get_title = req.query.trip_name;  
+    trip.find({'trip_name': {$regex:get_title, $options:"i"}})
+    .select('user_id').populate('user_id').then(function(result){
+        res.send(result)
+    }).catch(function(e){
+        res.send(e)
+    })
+}
+
+
