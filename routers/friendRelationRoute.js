@@ -10,8 +10,4 @@ router.get("/checkRelation",friendrelation.checkFriendRelation)
 router.delete("/deleteFriend/:id",friendrelation.deleteFriend)
 router.get("/getallrelation/:id",friendrelation.getallfriendrelation)
 
-
-
-
-
 module.exports = router

@@ -1,4 +1,4 @@
-const User = require('../model/userModel');
+const Trip = require('../model/tripModel');
 const mongoose = require('mongoose');
 
 const url = 'mongodb://localhost:27017/testJourneyMate'; 
@@ -14,31 +14,32 @@ afterAll(async () => {
     await mongoose.connection.close();
 });
 
-describe('User Schema test anything', () => {
+describe('Trip Schema test anything', () => {
     // the code below is for insert testing
-        it('Add User testing anything', () => {
-            const user = {
-                'name': 'Kushal',
-                'address': 'jorpati'
+        it('Add Trip testing anything', () => {
+            const trip = {
+                'trip_name': 'jorpati',
+                'description':'going to jorpati',
+                'date':'2020/03/04'
             };
             
-            return User.create(user)
+            return Trip.create(trip)
                 .then((pro_ret) => {
-                    expect(pro_ret.name).toEqual('Kushal');
+                    expect(pro_ret.trip_name).toEqual('jorpati');
                 });
         });
         //test for update
         it('to test the update', async () => {
 
-            return User.findOneAndUpdate({name:'Kushal'}, {$set : {name:'ram'}})
+            return Trip.findOneAndUpdate({date:'2020/03/04'}, {$set : {date:'2020/03/06'}})
             .then((pp)=>{
-                expect(pp.address).toEqual('jorpati')
+                expect(pp.trip_name).toEqual('jorpati')
             })
           
         });
     // the code below is for delete testing
         it('to test the delete product is working or not', async () => {
-            const status = await User.deleteMany();
+            const status = await Trip.deleteMany();
             expect(status.ok).toBe(1);
     });
 

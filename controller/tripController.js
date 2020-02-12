@@ -50,7 +50,7 @@ exports.findTripByUserId= (req, res) => {
 
   //function for update trip 
   exports.updateTrip = (req,res) =>{
-        trip.findOneAndUpdate(req.params._id,req.body).then(function(){
+        trip.findByIdAndUpdate(req.params._id,req.body).then(function(){
             res.send("Trip Updated").catch(function(e){
                 res.send(e)
             })

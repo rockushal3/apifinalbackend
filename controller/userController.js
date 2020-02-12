@@ -95,7 +95,6 @@ exports.uploadcoverimage = (req, res) => {
 }
 
 exports.uploadimage = (req, res) => {
-   
     req.files.map(function (items) {
         const User = {
             image: items.filename
@@ -127,17 +126,15 @@ exports.logout=(req, res)=>{
     user.findById(req.user._id, function(err, userdata){
         console.log(req.token)
       var  deletetoken = {token : req.token}
-
-    
-        userdata.tokens = userdata.tokens.splice(userdata.tokens.indexOf(deletetoken), 1);
-
+      var  delete1 = userdata.tokens.splice(userdata.tokens.indexOf(deletetoken), 1);
+        userdata.tokens= userdata.tokens.pull(delete1[0]._id)
+        console.log(userdata.tokens)
         userdata.save((err, data) => {
             if(err) return res.send({
                 success : false,
                 message : err.message
             })
         })
-
         return res.send({
             success : true,
             message : "Logged Out",
