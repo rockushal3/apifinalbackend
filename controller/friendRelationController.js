@@ -2,6 +2,7 @@ const friendrelation = require("../model/friendRelationModel")
 var ObjectID = require('mongodb').ObjectID;
 //function for friend request
 exports.addfriend = (req, res) => {
+    console.log(req.body)
     const friendadd = new friendrelation({
         user_id_1: ObjectID(req.body.user_id_1),
         user_id_2: ObjectID(req.body.user_id_2),
@@ -50,7 +51,7 @@ exports.acceptfriend = (req, res) => {
 exports.checkFriendRelation = (req, res) => {
     friendrelation.findOne({ $or: [{ user_id_1: req.query.user_id_1, user_id_2: req.query.user_id_2 },
         { user_id_1: req.query.user_id_2, user_id_2: req.query.user_id_1 }]}).populate('user_id_1').populate('user_id_2').then(function (getfriend) {
-        res.send(getfriend)
+        res.send(getfriend) 
     }).catch(function (e) {
         res.send(e)
     })
@@ -63,6 +64,7 @@ exports.deleteFriend = (req,res) =>{
 }
 
 exports.getallfriendrelation=(req,res) => {
+    console.log(req.params.id)
     friendrelation.find({ $or: [{ user_id_2: req.params.id,Status:"Requested"},{ user_id_1: req.params.id,Status:"Friends"}]})
     .populate('user_id_1').populate('user_id_2')
     .then(function(getalldata){
